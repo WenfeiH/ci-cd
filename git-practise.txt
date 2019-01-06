@@ -1,0 +1,37 @@
+git reset --hard SHA
+git checkout -b feature origin/feature
+
+1.update master when during develop branch editing
+git checkout master
+
+2.merge many small commits-----same result [4]
+git log --oneline -10
+git reset SHA
+(Will show message
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git checkout -- <file>..." to discard changes in working directory)
+
+        modified:   git-practise.txt)
+so add & commit:
+git add .
+git commit -m ""
+
+3. 
+fork as feature branch
+  git clone <my own forked git repository>
+  git checkout -b <feature branch (new local branch)>
+  
+  git remote add origin <my own forked git repository>
+  git remote add upstream <original git repository>
+  
+ can start your develop
+  git push origin <feature branch(local)>
+before pull merge request, need to check whether remote original branch has changed
+  git pull upstream <master(remote)>
+  git rebase <master(local)>
+
+
+4. want to remove a certain commit£¬SHA will change
+use git rebase&vim 
+	also can edit commit message
