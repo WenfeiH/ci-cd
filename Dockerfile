@@ -1,20 +1,21 @@
+#development mode
 FROM node:8
 
 # Create app directory
-RUN mkdir /usr/src/app
 WORKDIR /usr/src/app
 
 # Install app dependencies
-# A wildcard is used to ensure both package.json AND package-lock.json are copied
-# where available (npm@5+)
-COPY package.json /usr/src/app
-
+COPY package*.json ./
 RUN npm install
 
 # Bundle app source
-# COPY . /usr/src/app
-
-EXPOSE 8080
+COPY . .
+EXPOSE 4000
+CMD ["npm", "start"]
+# Stage 1 - the build process
 # RUN npm run build
-
-CMD npm start
+# # Stage 2 - the production environment
+# EXPOSE 8080
+# # 将 dist 目录部署于 8080 端口
+# CMD ["serve", "-s", "build", "-p", "8080"]
+# # CMD npm start
